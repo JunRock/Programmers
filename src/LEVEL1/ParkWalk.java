@@ -1,7 +1,7 @@
 package LEVEL1;
 
 public class ParkWalk {
-    public static void solution(String[] park, String[] routes) {
+    public int[] solution(String[] park, String[] routes) {
         String tmp = "";
         int count=0;
         int x=0,y=0;
@@ -38,21 +38,16 @@ public class ParkWalk {
                 }
 
                 if (resultX >= 0 && resultY >= 0 && resultX < park[0].length() && resultY < park.length) {
-                    if (arr[resultX][resultY] == 'X')
+                    if (arr[resultY][resultX] == 'X')
                         break;
-                    else {
+                   if(j==num[i]-1) {
                         x = resultX;
                         y = resultY;
                     }
                 }
             }
         }
-        System.out.println(x+" "+y);
-    }
-
-    public static void main(String[] args) {
-        String[] park={"SOO","OXX","OOO"};
-        String[]routes={"E 2","S 2","W 1"};
-        solution(park,routes);
+        int[] answer={y,x};
+        return answer;
     }
 }
