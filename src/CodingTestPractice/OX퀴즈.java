@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class OX퀴즈 {
     public static void main(String[] args) {
-        String[] quiz={"3 - 4 = -3", "5 + 6 = 11"};
+        String[] quiz={"1 + -9 = -8", "4 + -5 = 0"};
 
         String[] solution = solution(quiz);
         for(int i=0;i< solution.length;i++)
@@ -13,38 +13,26 @@ public class OX퀴즈 {
     }
 
     public static String[] solution(String[] quiz) {
-        String[] answer = {};
+        String[] answer = new String[quiz.length];
         String str1="";
         String str2="";
         int result;
+        int sum = 0;
         for(int i=0;i< quiz.length;i++){
-            quiz[i]=quiz[i].replaceAll(" ","");
-            String[] str=quiz[i].split("=");
-
+            String[] str=quiz[i].split("= ");
             result= Integer.parseInt(str[1]); //결과 값
-            if(str[0].contains("-")){
-                String[] operAnd1=str[0].split("-");
-                str1=operAnd1[0];
-                str2=operAnd1[1];
-
-               int sum = Integer.parseInt(String.valueOf(Integer.parseInt(str1) - Integer.parseInt(str2)));
-               if(sum==result)
-                   answer[i]="O";
-               else
-                   answer[i]="X";
+            String[] operator=str[0].split(" ");
+            if(operator[1].equals("+")){
+                sum= Integer.parseInt(String.valueOf(Integer.parseInt(operator[0]) + Integer.parseInt(operator[2])));
+            }
+            if(operator[1].equals("-")){
+                sum= Integer.parseInt(String.valueOf(Integer.parseInt(operator[0]) - Integer.parseInt(operator[2])));
             }
 
-            if(str[0].contains("+")){
-                String[] operAnd1=str[0].split("+");
-                str1=operAnd1[0];
-                str2=operAnd1[1];
-
-                int sum = Integer.parseInt(Integer.parseInt(str1) + str[0]+Integer.parseInt(str2));
-                if(sum==result)
-                    answer[i]="O";
-                else
-                    answer[i]="X";
-            }
+            if(result==sum)
+                answer[i]="O";
+            else
+                answer[i]="X";
         }
         return answer;
     }
