@@ -14,8 +14,6 @@ public class OX퀴즈 {
 
     public static String[] solution(String[] quiz) {
         String[] answer = new String[quiz.length];
-        String str1="";
-        String str2="";
         int result;
         int sum = 0;
         for(int i=0;i< quiz.length;i++){
