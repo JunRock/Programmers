@@ -1,19 +1,25 @@
 package LEVEL1;
+
 import java.util.*;
+
 public class MemoryScore {
-        public int[] solution(String[] name, int[] yearning, String[][] photo) {
-            int[] answer =new int[photo.length];
-            Map<String,Integer> map=new HashMap<>();
 
-            for(int i=0;i<name.length;i++)
-                map.put(name[i],yearning[i]);
+    public static void main(String[] args) {
+        int[][] v = {{1, 4}, {3, 4}, {3, 10}};
+        int[] solution = solution(v);
+        System.out.print(solution[0]+","+solution[1]);
+    }
 
-            for(int i=0;i<photo.length;i++){
-                for(int j=0;j< photo[i].length;j++){
-                    if(map.containsKey(photo[i][j]))
-                        answer[i]+=map.get(photo[i][j]);
-                }
-            }
-            return answer;
+    public static int[] solution(int[][] v) {
+        int[] answer = new int[2];
+        int x=0,y=0;
+        Vector<Integer> vector=new Vector<>();
+        for(int i=0;i<3;i++){
+            vector.add(v[i][0]);
         }
+       if(vector.get(0)==vector.get(1)){
+           vector.clear();
+       }
+        return answer;
+    }
 }
